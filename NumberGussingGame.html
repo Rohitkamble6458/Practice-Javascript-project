@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Guessing Game</title>
     <style>
-        body{
+        body {
             background-color: black;
             color: white;
         }
-        .container{
+
+        .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -17,33 +19,95 @@
             font-size: 20px;
 
         }
-        .input{
+
+        .input {
             height: 50px;
             width: 300px;
             border-radius: 15px;
-            font-size: 20px;
-
+            font-size: 25px;
+            text-align: center;
         }
 
+        .submit {
+            margin-top: 20px;
+            height: 50px;
+            width: 110px;
+            font-size: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px
+        }
+
+        .retry {
+            margin-left: 15px;
+            margin-top: 20px;
+            height: 50px;
+            width: 80px;
+            font-size: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .row {
+            display: flex;
+            /* flex-direction: column; */
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Number Guessing Game</h1> 
+        <h1>Number Guessing Game</h1>
         <p>Try and guess a random number between 1 and 10.</p>
-        <input type="text" class="input">
-
+        <input type="text" class="input" name="input">
+        <div class="row">
+            <button type="submit" class="submit"> Guess Submit</button>
+        </div>
+        <div class="result"></div>
+        <button type="submit" class="retry"> Retry </button>
 
     </div>
 
 
 
-
-
-
-
     <script>
+        const input = document.querySelector(".input")
+        const submit = document.querySelector(".submit")
+        const result = document.querySelector(".result")
+        const retry = document.querySelector(".retry")
+
+        submit.addEventListener('click', function () {
+
+            let random = Math.round(Math.random() * 10 + 1)
+            console.log(random)
+
+            let guess = input.value
+            // console.log(guess)
+            if (guess > 10 || guess < 1) {
+                result.textContent = 'Enter the Number Between 1 to 10';
+            } else if (random != guess) {
+                result.textContent = `Your Guesse is Wrong! ${guess} `
+                retry.style.display = 'block'
+                retry.addEventListener('click', function () {
+                    location.reload()
+                    input.value = ''
+                })
+            }
+            else if (random == guess) {
+                result.textContent = `Your Guesse is Correct! ${guess} `
+                retry.addEventListener('click', function () {
+                    location.reload()
+                    input.value = ''
+                })
+                console.log("Your Guesse is Correct!")
+
+            }
+        });
+
+        // retry.addEventListener('click',function(){
+        //     input.value=''
+        // })
 
     </script>
 </body>
+
 </html>
