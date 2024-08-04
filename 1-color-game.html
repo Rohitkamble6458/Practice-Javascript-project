@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLOR GAME</title>
+</head>
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .squares {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+        width: 100px;
+        border: 2px solid red;
+        margin: 15px 15px 15px 15px;
+        padding: 5px;
+        color: black;
+        cursor: pointer;
+    }
+    .box1{
+        background-color: white;
+    }
+    .box2{
+        background-color: yellow;
+    }
+    .box3{
+        background-color: gray;
+    }
+    .box4{
+        background-color: blue;
+        color: white;
+    }
+</style>
+
+<body>
+
+    <h1 class="title">Color Scheme Switcher</h1>
+    <div class="main">
+        <div class="div">
+            <div class="squares box1">1</div>
+            <div class="squares box2">2</div>
+        </div>
+        <div class="div">
+            <div class="squares box3">3</div>
+            <div class="squares box4">4</div>
+        </div>
+    </div>
+<script>
+
+    const body=document.querySelector("body")
+    const box1=document.querySelector(".box1")
+    const box2=document.querySelector(".box2")
+    const box3=document.querySelector(".box3")
+    const box4=document.querySelector(".box4")
+
+    box1.addEventListener('click',(event) =>{
+        event.preventDefault();
+        if(box1.style.backgroundColor="white"){
+            box1.innerHTML="Box1 Clicked"
+            body.style.backgroundColor="white";
+            body.style.color="black";          
+        }
+    })
+    box1.addEventListener('mouseleave',function(){
+        box1.innerHTML="1"
+
+    })
+
+    box2.addEventListener('click',(event) =>{
+        event.preventDefault();
+        if(box2.style.backgroundColor="yellow"){
+            box2.innerHTML="Box2 Clicked"
+            body.style.backgroundColor="yellow";
+            body.style.color="black";          
+        }
+    })
+    box2.addEventListener('mouseleave',function(){
+        box2.innerHTML="2"
+
+    })
+    box3.addEventListener('click',(event) =>{
+        event.preventDefault();
+        if(box3.style.backgroundColor="gray"){
+            box3.innerHTML="Box3 Clicked"
+            body.style.backgroundColor="gray";
+            body.style.color="black";          
+        }
+    })
+    box3.addEventListener('mouseleave',function(){
+        box3.innerHTML="3"
+
+    })
+    box4.addEventListener('click',(event) =>{
+        event.preventDefault();
+        if(box4.style.backgroundColor="blue"){
+            box4.innerHTML="Box4 Clicked"
+            body.style.backgroundColor="blue";
+            body.style.color="white";          
+        }
+    })
+    box4.addEventListener('mouseleave',function(){
+        box4.innerHTML="4"
+
+    })
+    
+    
+</script>
+</body>
+
+</html>
