@@ -62,6 +62,7 @@
         <div class="row">
             <button type="submit" class="submit"> Guess Submit</button>
         </div>
+        <div class="prev"></div>
         <div class="result"></div>
         <button type="submit" class="retry"> Retry </button>
 
@@ -74,6 +75,10 @@
         const submit = document.querySelector(".submit")
         const result = document.querySelector(".result")
         const retry = document.querySelector(".retry")
+        const prev = document.querySelector(".prev")
+
+        let previous = []
+
 
         submit.addEventListener('click', function () {
 
@@ -86,6 +91,9 @@
                 result.textContent = 'Enter the Number Between 1 to 10';
             } else if (random != guess) {
                 result.textContent = `Your Guesse is Wrong! ${guess} `
+                // previous.push(guess)
+                // prev.textContent =`Previous Guessess :${previous}`
+                
                 retry.style.display = 'block'
                 retry.addEventListener('click', function () {
                     location.reload()
