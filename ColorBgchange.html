@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Background color Change</title>
+    <title>The Background Color Change</title>
     <style>
         h1 {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 50px;
-
         }
 
         .container {
@@ -32,40 +31,58 @@
 </head>
 
 <body style="background-color: black; color: white;">
-    <h1>The Background color Change</h1>
+    <h1>The Background Color Change</h1>
     <div class="container">
         <div>
-            <button class="Start">Start</button>
+            <button class="start">Start</button>
         </div>
         <div>
-            <button class="Stop">Stop</button>
+            <button class="stop">Stop</button>
         </div>
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const start = document.querySelector(".start");
+            const stop = document.querySelector(".stop");
 
-        const body =document.querySelector("body")
-        const start =document.querySelector(".start")
-        start.addEventListener('click',function(){
-            body.style.backgroundColor=randomclr()
-
-        })
-
-        const Stop =document.querySelector(".Stop")
-
-        function randomclr(){
-            hex='0123456789ABCDEF';
-            let color ='#';
-            for(let i=0;i<6;i++){
-                color += hex[Math.floor(Math.random()*16)]
+            function randomclr() {
+                const hex = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += hex[Math.floor(Math.random() * 16)];
+                }
+                return color;
             }
-            return color
-
-        }
-        // console.log(randomclr())
+            // console.log(randomclr())
 
 
+            let intervalid = null;
 
+            const startchangeclr = function () {
+                if (!intervalid) {
+                    intervalid = setInterval(changeclr, 1000);
+                }
+
+                function changeclr() {
+                    document.body.style.backgroundColor = randomclr();
+                    start.innerHTML = 'Started'
+                    stop.innerHTML = 'Stop'
+
+                }
+            };
+
+            const stopclr = function () {
+                clearInterval(intervalid);
+                intervalid = null;
+                start.innerHTML = 'ReStar'
+                stop.innerHTML = 'Stopped'
+
+            };
+
+            start.addEventListener('click', startchangeclr);
+            stop.addEventListener('click', stopclr);
+        });
     </script>
 </body>
 
